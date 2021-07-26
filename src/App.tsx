@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import './App.css';
 import {AppStateType} from "./bll/store";
-import {incValuesTC, setValueFromLocalStorageTC} from "./bll/counter-reducer";
+import {incValueAC} from "./bll/counter-reducer";
 
 function App() {
 
@@ -10,11 +10,11 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setValueFromLocalStorageTC())
+        // dispatch(setValueFromLocalStorageTC())
     }, [])
 
     let incHandler = () => {
-        dispatch(incValuesTC())
+        dispatch(incValueAC())
     }
 
     return (
