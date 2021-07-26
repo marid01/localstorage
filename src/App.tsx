@@ -1,33 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import './App.css';
 import {AppStateType} from "./bll/store";
-import {incValueAC} from "./bll/counter-reducer";
+import {incValuesTC, setValueFromLocalStorageTC} from "./bll/counter-reducer";
 
 function App() {
 
     const value = useSelector<AppStateType, number>(state => state.counter.value)
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(setValueFromLocalStorageTC())
+    }, [])
+
     let incHandler = () => {
-        dispatch(incValueAC())
+        dispatch(incValuesTC())
     }
-
-    // const [value, setValue] = useState<number>(0)
-    //
-    // useEffect(() => {
-    //     let valueAsString = localStorage.getItem('counterValue')
-    //     if (valueAsString) {
-    //         let newValue = JSON.parse(valueAsString)
-    //         setValue(newValue)
-    //     }
-    // }, [])
-    //
-    // useEffect(() => {
-    //     localStorage.setItem('counterValue', JSON.stringify(value))
-    // }, [value])
-    //
-
 
     return (
         <div className="App">
